@@ -49,6 +49,8 @@ gem 'octokit'
 
 gem 'attr_encrypted'
 
+gem 'rails_12factor'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
