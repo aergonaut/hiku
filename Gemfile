@@ -47,6 +47,8 @@ gem 'omniauth-github'
 
 gem 'octokit'
 
+gem 'attr_encrypted'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
