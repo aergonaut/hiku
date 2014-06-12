@@ -6,9 +6,10 @@ class SearchController < ApplicationController
   
   def pulls
     @pulls = pulls_for_branch(params[:branch])
-    @pulls.map do |pull|
-      issue = client.issue(ENV["HIKU_GITHUB_REPOSITORY"], pull["number"])
+    @pulls = @pulls.map do |pull|
+      issue = issue_for_pull(pull["number"])
       pull["labels"] = issue["labels"]
+      pull
     end
     respond_to do |format|
       format.js
@@ -19,6 +20,10 @@ class SearchController < ApplicationController
   
   def pulls_for_branch(branch)
     client.pull_requests(ENV["HIKU_GITHUB_REPOSITORY"], base: branch)
+  end
+  
+  def issue_for_pull(pull_number)
+    client.issue(ENV["HIKU_GITHUB_REPOSITORY"], pull_number)
   end
   
   def client

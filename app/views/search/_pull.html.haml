@@ -2,8 +2,11 @@
   .pull-left
     = image_tag pull["user"]["avatar_url"], height: 64, width: 64
   .media-body
-    %h4= link_to pull["title"], pull["html_url"], target: "_blank"
+    %h4.media-heading= link_to pull["title"], pull["html_url"], target: "_blank"
     %p
+      - if jira_num = (pull[:title] =~ /cd-?\s?(\d+)/i;"CD-#{$1}" if $1.present?)
+        = link_to jira_num, "https://coupadev.atlassian.net/browse/#{jira_num}", target: "_blank"
+        %br/
       by
       %strong= pull["user"]["login"]
 
@@ -11,4 +14,4 @@
         %span.badge= pull["milestone"]["title"]
 
       - if pull["labels"].any?
-        = pull["labels"].inject("") { |str, label_hash| str << content_tag(:span, label_hash["name"], class: "label", style: "background-color: ##{label_hash["color"]}") << " " }.html_safe
+        = pull["labels"].map { |label_hash| content_tag(:span, label_hash["name"], class: "label", style: "background-color: ##{label_hash["color"]}") }.join(" ").html_safe
