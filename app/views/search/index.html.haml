@@ -1,0 +1,6 @@
+= form_tag search_pulls_path, method: :get, id: "search-form", remote: true do
+  .form-group
+    = label_tag :branch, "Branch", class: "sr-only"
+    = text_field_tag :branch, "", placeholder: "Branch", class: "form-control input-lg"
+
+#results

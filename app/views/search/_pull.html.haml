@@ -1,0 +1,14 @@
+.media.animation-target
+  .pull-left
+    = image_tag pull["user"]["avatar_url"], height: 64, width: 64
+  .media-body
+    %h4= link_to pull["title"], pull["html_url"], target: "_blank"
+    %p
+      by
+      %strong= pull["user"]["login"]
+
+      - if pull["milestone"]
+        %span.badge= pull["milestone"]["title"]
+
+      - if pull["labels"].any?
+        = pull["labels"].inject("") { |str, label_hash| str << content_tag(:span, label_hash["name"], class: "label", style: "background-color: ##{label_hash["color"]}") << " " }.html_safe

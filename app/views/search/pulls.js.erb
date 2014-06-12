@@ -1,0 +1,5 @@
+$("#results").html("")
+console.log("yep")
+<%- @pulls.each do |pull| %>
+  $("#results").append("<%= j render(partial: "pull", object: pull).html_safe %>");
+<%- end  %>
