@@ -27,6 +27,6 @@ class SearchController < ApplicationController
   end
   
   def client
-    @client ||= Octokit::Client.new access_token: ENV["HIKU_GITHUB_ACCESS_TOKEN"]
+    @client ||= Octokit::Client.new access_token: current_user.access_token
   end
 end
