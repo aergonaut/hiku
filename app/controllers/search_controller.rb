@@ -12,7 +12,7 @@ class SearchController < ApplicationController
       hash
     end
     @pulls = @pulls.map do |pull|
-      pull["labels"] = @issues["##{pull["number"]}"]["labels"]
+      pull["issue"] = @issues["##{pull["number"]}"]
       pull
     end
     template = @pulls.any? ? :pulls : :no_results
