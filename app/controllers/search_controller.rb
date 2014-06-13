@@ -15,8 +15,9 @@ class SearchController < ApplicationController
       pull["labels"] = @issues["##{pull["number"]}"]["labels"]
       pull
     end
+    template = @pulls.any? ? :pulls : :no_results
     respond_to do |format|
-      format.js
+      format.js { render template }
     end
   end
   

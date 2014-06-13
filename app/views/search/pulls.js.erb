@@ -1,5 +1,5 @@
-$("#loading").hide()
-$("#branch").removeAttr("disabled")
+$("#loading").hide();
+$("#branch").removeAttr("disabled");
 <%- @pulls.each do |pull| %>
   $("#results").append("<%= j render(partial: "pull", object: pull).html_safe %>");
 <%- end  %>
