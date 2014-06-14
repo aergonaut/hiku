@@ -1,8 +1,6 @@
 .media.animation-target
   .complete-button.text-danger{title: "Mark this pull request as handled."}
     %strong &times;
-  -# .pull-left
-  -#   = image_tag pull["user"]["avatar_url"], height: 64, width: 64
   .media-body
     %h4.media-heading= link_to pull["title"], pull["html_url"], target: "_blank"
     %p
@@ -11,11 +9,11 @@
 
     - if pull["issue"]["assignee"]
       %p.pull-right
-        = image_tag pull["issue"]["assignee"]["avatar_url"], height: 16, width: 16
+        = image_tag pull["issue"]["assignee"]["avatar_url"], height: 16, width: 16, class: "mini-avatar"
         assignee
         %strong= pull["issue"]["assignee"]["login"]
     %p
-      = image_tag pull["user"]["avatar_url"], height: 16, width: 16
+      = image_tag pull["user"]["avatar_url"], height: 16, width: 16, class: "mini-avatar"
       by
       %strong= pull["user"]["login"]
 
