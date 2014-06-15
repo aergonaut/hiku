@@ -51,6 +51,8 @@ gem 'attr_encrypted'
 
 gem 'rails_12factor'
 
+gem 'newrelic_rpm'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
